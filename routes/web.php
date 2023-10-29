@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// 
+Route::get('/', [App\Http\Controllers\MemoController::class, 'index']);
 
 // リソースを使用する場合//1定義で7つのルーティングが定義できる
 Route::resource('memos', MemoController::class);
