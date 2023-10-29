@@ -58,8 +58,8 @@ class MemoController extends Controller
         $memo = Memo::find($id);    //Memoモデルの中からidを探している
 
         // 値の用意
-        $memo->title = $request->title;
-        $memo->body = $request->body;
+        $memo->title = $request->title; //titleの値を代入
+        $memo->body = $request->body;   //bodyの値を代入
 
         // インスタンスに値を設定して保存
         $memo->save();
@@ -67,5 +67,14 @@ class MemoController extends Controller
         // 登録したらindexに戻る
         return redirect(route('memos.index'));
     }
+
+
+    public function destroy($id)   //destroyメソッドを定義
+    {
+        $memo = Memo::find($id);    //Memoモデルの中からidを探している
+        $memo->delete();    //削除
+        return redirect(route('memos.index'));    //indexページに戻る
+    }
+
 
 }
