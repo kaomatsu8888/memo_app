@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!-- 一覧ページ -->
 <html lang="ja">
 
 <head>
