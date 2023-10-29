@@ -44,4 +44,28 @@ class MemoController extends Controller
         $memo = Memo::find($id);    //Memoモデルの中からidを探している
         return view('memos.show', ['memo' => $memo]); //viewメソッドで表示する
     }
+
+
+    public function edit($id)   //editメソッドを定義
+    {
+        $memo = Memo::find($id);    //Memoモデルの中からidを探している
+        // dd($memo);   //memoの中身を確認
+        return view('memos.edit', ['memo' => $memo]);   //viewメソッドで表示する
+    }
+
+    public function update(Request $request, $id)    //updateメソッドを定義
+    {
+        $memo = Memo::find($id);    //Memoモデルの中からidを探している
+
+        // 値の用意
+        $memo->title = $request->title;
+        $memo->body = $request->body;
+
+        // インスタンスに値を設定して保存
+        $memo->save();
+
+        // 登録したらindexに戻る
+        return redirect(route('memos.index'));
+    }
+
 }
